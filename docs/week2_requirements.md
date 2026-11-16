@@ -1,4 +1,4 @@
-# Requirements Specification — UniNet Recommender: Enhanced Hybrid Event Recommendation
+# Requirements Specification — Enhanced Hybrid Event Recommendation
 Version: 1.0
 
 ## Section 0 — Project Framing & Application Scope Checkpoint
