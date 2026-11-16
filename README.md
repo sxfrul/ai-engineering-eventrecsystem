@@ -1,4 +1,4 @@
-# UniNet Recommender: Enhanced Hybrid Event Recommendation
+# Enhanced Hybrid Event Recommendation
 > An enhanced recommendation engine for UniNet that helps university students discover relevant technical opportunities, such as programming competitions, workshops, talks and meetups, through semantic matching and learned ranking.
 
 ## Problem Statement
