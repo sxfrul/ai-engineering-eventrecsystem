@@ -1,0 +1,8 @@
+# Raw source snapshots contain personal identifiers (user IDs, names).
+# They stay local / in Colab only. See docs/week3_data_inventory.md.
+data/raw/
+
+# Notebook and Python caches
+.ipynb_checkpoints/
+__pycache__/
+*.tmp

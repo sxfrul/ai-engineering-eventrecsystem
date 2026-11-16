@@ -79,6 +79,13 @@ See [`week2_architecture_v1.png`](week2_architecture_v1.png). Components are lab
 | O3 | NFR2 | NDCG@10, Precision@10; online CTR and registration rate | Ranking Model Training + Offline Evaluation + A/B Experiment Assignment | Offline evaluation report; A/B test results |
 | O3 | RAI1 / RAI2 | Diversity, coverage, Malay-to-English exposure ratio | Diversity Re-ranking + Exposure, Latency & Cost Monitoring | Simulated-feed exposure analysis |
 
+**Week 3 evidence update:** the *Event Catalogue* component now has an executable V1 data pipeline (see [`week3_pipeline_decisions.md`](week3_pipeline_decisions.md) and [`week3_pipeline_diagram.png`](week3_pipeline_diagram.png)).
+- **FR2 / NFR3:** `embedding_text` is prepared for all 63 catalogue events in `data/processed/prepared_json.jsonl`.
+- **RAI3:** personal identifiers are removed before storage, in line with the ETL decision and the ADR4 privacy stance, and the raw snapshot is never committed.
+- **NFR6:** the pipeline reruns repeatably with SHA-256 lineage (`data/week3_manifest.json`, `data/pipeline_v1/json/pipeline_manifest.json`).
+
+The Interaction & Impression Log is still pending (ADR4).
+
 ## Final Review Checklist
 
 - **Does each major component support a requirement or evaluation need?** Yes. Every component in C2 maps to at least one FR, NFR, RAI or business constraint, and each row of the traceability matrix names its component.

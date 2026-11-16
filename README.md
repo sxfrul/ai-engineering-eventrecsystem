@@ -32,12 +32,21 @@ University students in Malaysia who use UniNet to discover and register for tech
 - Microsoft News Dataset (MIND), public recommendation benchmark for supplementary offline evaluation — https://msnews.github.io/
 - UniNet anonymised interaction logs (views, scroll depth, register clicks, completed registrations) — private, not committed
 
+## Week 3 — V1 Data Pipeline
+The first executable pipeline prepares the **Event Catalogue** from the V1 architecture. That catalogue is the data that FR2 (semantic matching for new events) depends on.
+
+- **Source:** the UniNet `events` collection, read through the public Firestore REST endpoint and frozen as a snapshot (63 events, 2026-11-16). This is real platform data, not the dummy practice pack.
+- **Pathway:** D, JSON / API export. The pipeline decodes Firestore typed values, flattens the Lexical editor descriptions into text, masks phone numbers and emails, keeps public fields only, and excludes unlisted or report-hidden events.
+- **Evidence:** 63 prepared records with `embedding_text`, 0 personal fields or user IDs in the output, SHA-256 lineage manifests, and a rerun that produces identical bytes.
+- **Privacy:** the raw snapshot contains user IDs, names and contact details, so `data/raw/` is git-ignored. Only the identifier-free prepared output is committed.
+- **Artefacts:** [notebook](notebooks/week3_pipeline.ipynb) · [data inventory](docs/week3_data_inventory.md) · [pipeline diagram](docs/week3_pipeline_diagram.png) · [decisions & stage contracts](docs/week3_pipeline_decisions.md) · [lineage manifest](data/week3_manifest.json) · [pipeline run](data/pipeline_v1/json/pipeline_manifest.json)
+
 ## Weekly Progress
 | Week | Focus | Deliverable | Status |
 |------|-------|-------------|--------|
 | W1 | System map + project scope | README + docs | ✅ |
 | W2 | Requirements, evaluation criteria + V1 architecture | `docs/week2_requirements.md`, `docs/week2_evaluation_criteria.md`, `docs/week2_architecture_v1.png`, `docs/week2_architecture_decisions.md` | ✅ |
-| W3 | Data collection + preprocessing | Anonymised interaction dataset | ⬜ |
+| W3 | Data engineering: V1 data pipeline (event catalogue) | `notebooks/week3_pipeline.ipynb`, `docs/week3_data_inventory.md`, `docs/week3_pipeline_diagram.png`, `docs/week3_pipeline_decisions.md`, `data/processed/`, `data/week3_manifest.json`, `data/pipeline_v1/json/` | ✅ |
 | W4 | Baseline offline evaluation | Baseline Precision@K, NDCG@K, coverage, diversity | ⬜ |
 | W5 | Multilingual sentence embeddings | Event embeddings in nightly pipeline | ⬜ |
 | W6 | Time-decayed interest profiles | Decay function + updated user profiles | ⬜ |

@@ -1,0 +1,71 @@
+{
+  "pipeline_version": "week3-v1",
+  "generated_at_utc": "2026-11-16T01:28:05.110949+00:00",
+  "data_type": "json",
+  "configuration": {
+    "record_key": "documents",
+    "required_keys": [
+      "name",
+      "fields"
+    ],
+    "required_fields": [
+      "title",
+      "description",
+      "type",
+      "createdAt"
+    ],
+    "drop_personal_fields": [
+      "userId",
+      "organizer",
+      "organizerPhoto",
+      "reportedBy"
+    ],
+    "exclude": {
+      "visibility": "unlisted",
+      "min_reports": 5
+    },
+    "description": "lexical-flatten (UniNet lexical.ts parity) + mask phone/email",
+    "invalid_record_policy": "exclude",
+    "sort": [
+      "created_at",
+      "event_id"
+    ]
+  },
+  "processing_method": "Firestore REST JSON to JSONL; decode-firestore + lexical-flatten + mask-contacts + public-whitelist + exclude-unlisted-reported; prepared=63; excluded=none; missing_required=0",
+  "sources": [
+    {
+      "path": "data/raw/uninet_events/events_snapshot.json",
+      "sha256": "e2a79eef879cfc93f75b0f0e6a9eff6b9a1174865dd7dc54d1f2a38b3bc12907"
+    }
+  ],
+  "outputs": [
+    "data/pipeline_v1/json/prepared_json.jsonl"
+  ],
+  "source_output_mapping": [
+    {
+      "source": "data/raw/uninet_events/events_snapshot.json",
+      "output": "data/pipeline_v1/json/prepared_json.jsonl"
+    }
+  ],
+  "inspection": {
+    "source_version": "snapshot fetched 2026-11-16T01:08:00+00:00",
+    "record_count": 63,
+    "valid_records": 63,
+    "missing_required": 0,
+    "club_hosted": 43,
+    "member_hosted": 20,
+    "lexical_descriptions": 63,
+    "records_with_personal_fields": 63
+  },
+  "validation": {
+    "output_count": 1,
+    "output_sha256": [
+      "1d6f6d9c58963477f3c943f99ddf1a59e6a6c8d1520c75aa8ab81ec37c72be26"
+    ],
+    "output_bytes": [
+      196075
+    ]
+  },
+  "source_version": "snapshot fetched 2026-11-16T01:08:00+00:00",
+  "access_rights": "Public read of UniNet events; raw snapshot not committed (contains personal identifiers)"
+}

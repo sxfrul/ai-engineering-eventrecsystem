@@ -1,0 +1,17 @@
+{
+  "pipeline_version": "week3-v1",
+  "generated_at_utc": "2026-11-16T01:28:05.019376+00:00",
+  "records": [
+    {
+      "source_id": "S01",
+      "source_filename": "uninet_events/events_snapshot.json",
+      "source_sha256": "e2a79eef879cfc93f75b0f0e6a9eff6b9a1174865dd7dc54d1f2a38b3bc12907",
+      "prepared_output": "data/processed/prepared_json.jsonl",
+      "prepared_sha256": "1d6f6d9c58963477f3c943f99ddf1a59e6a6c8d1520c75aa8ab81ec37c72be26",
+      "processing_note": "Firestore REST JSON to JSONL; record_key=documents; required_keys=['name', 'fields']+fields['title', 'description', 'type', 'createdAt']; decode-firestore + lexical-flatten + mask-contacts + public-whitelist + exclude-unlisted-reported; dropped personal fields ['userId', 'organizer', 'organizerPhoto', 'reportedBy']; excluded=none",
+      "source_version": "Firestore snapshot fetched 2026-11-16T01:08:00+00:00 (63 documents; per-record updateTime kept)",
+      "access_rights": "Public read of UniNet events collection; raw snapshot contains personal identifiers and is NOT committed; prepared output is identifier-free",
+      "status": "Prepared; quality review pending (Topic 4)"
+    }
+  ]
+}
